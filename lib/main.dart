@@ -19,7 +19,7 @@ class Myapp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         debugShowMaterialGrid: false,
-        title: 'Flutter Demo',
+        title: 'Flutter Provider',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

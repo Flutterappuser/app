@@ -32,15 +32,15 @@ class _HomeState extends State<Home> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Second()),
+                    MaterialPageRoute(builder: (context) => const CheckOut()),
                   );
                 },
               ),
               Padding(
-                padding: EdgeInsets.only(right: 12),
+                padding: const EdgeInsets.only(right: 12),
                 child: Text(
                   "${Provider.of<Cart>(context).totalprice}",
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                 ),
               ),
             ],
@@ -67,14 +67,14 @@ class _HomeState extends State<Home> {
   }
 }
 
-class Second extends StatefulWidget {
-  const Second({super.key});
+class CheckOut extends StatefulWidget {
+  const CheckOut({super.key});
 
   @override
-  State<Second> createState() => _SecondState();
+  State<CheckOut> createState() => _CheckOutState();
 }
 
-class _SecondState extends State<Second> {
+class _CheckOutState extends State<CheckOut> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
