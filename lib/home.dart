@@ -37,12 +37,15 @@ class _HomeState extends State<Home> {
                 },
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: Text(
-                  "${Provider.of<Cart>(context).totalprice}",
-                  style: const TextStyle(color: Colors.black),
-                ),
-              ),
+                  padding: const EdgeInsets.only(right: 12),
+                  child: Consumer<Cart>(
+                    builder: (context, cart, child) {
+                      return Text(
+                        "${cart.totalprice}",
+                        style: const TextStyle(color: Colors.black),
+                      );
+                    },
+                  )),
             ],
           )
         ],
@@ -81,23 +84,20 @@ class _CheckOutState extends State<CheckOut> {
       appBar: AppBar(
         backgroundColor: Colors.amber[100],
       ),
-      body: ListView.builder(
-          itemCount: Provider.of<Cart>(context).items.length,
-          itemBuilder: ((context, index) {
-            return Card(
-              child: ListTile(
-                  title:
-                      Text("${Provider.of<Cart>(context).items[index].name}"),
+      body: Card(child: Consumer<Cart>(builder: (context, cart, child) {
+        return ListView.builder(
+            itemCount: cart.items.length,
+            itemBuilder: ((context, index) {
+              return ListTile(
+                  title: Text("${cart.items[index].name}"),
                   trailing: IconButton(
                     icon: const Icon(Icons.minimize),
                     onPressed: () {
-                      Provider.of<Cart>(context, listen: false).delet(
-                          Provider.of<Cart>(context, listen: false)
-                              .items[index]);
+                      cart.delet(cart.items[index]);
                     },
-                  )),
-            );
-          })),
+                  ));
+            }));
+      })),
     );
   }
 }
